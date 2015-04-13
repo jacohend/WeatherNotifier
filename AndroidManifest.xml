@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.contextnotifier"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="Weather Update Interval Settings"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.contextnotifier.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:enabled="true" android:name="com.contextnotifier.StartupReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+ 		  <intent-filter>
+     		<action android:name="android.intent.action.BOOT_COMPLETED"/>
+     	</intent-filter>
+     	</receiver>
+        <service
+		  android:name="Monitor"
+		  android:process=":monitor" >
+		</service> 
+    </application>
+
+</manifest>
